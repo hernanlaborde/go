@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/rand"
+	"flag"
 	"fmt"
 	"math/big"
 )
@@ -22,15 +23,15 @@ func genRandNum(min, max int64) int64 {
 
 // Muy Importante = [min, max)
 func main() {
-	var min, max int64
-	var cantidad int
 
-	min = 0
-	max = 101
-	cantidad = 10
+	min := flag.Int64("min", 0, "Valor mínimo (limite minimo incluido [min,max) )")
+	max := flag.Int64("max", 2, "Valor máximo (limite máximo excluido [min,max) )")
+	cantidad := flag.Int("cant", 0, "Cantidad de números aleatorios a generar")
 
-	for i := 0; i < cantidad; i++ {
-		num := genRandNum(min, max)
+	flag.Parse()
+
+	for i := 0; i < *cantidad; i++ {
+		num := genRandNum(*min, *max)
 		fmt.Printf("%v ", num)
 	}
 	fmt.Println("")
