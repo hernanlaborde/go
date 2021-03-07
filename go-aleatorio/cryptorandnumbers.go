@@ -7,6 +7,13 @@ import (
 	"math/big"
 )
 
+/*
+Ejemplos de ejecución.
+Genera 10 números aleatorios entre [0,100]
+go run cryptorandnumbers.go -min=0 -max=101 -cant=10
+Muestra el help:
+go run cryptorandnumbers.go -h
+*/
 func genRandNum(min, max int64) int64 {
 	//Como rand.Int solo entrega números de entre [0,max) se resta a max
 	dif := big.NewInt(max - min)
